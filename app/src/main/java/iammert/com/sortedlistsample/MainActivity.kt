@@ -15,8 +15,8 @@ fun RecyclerView.setup(context: Context) {
 
 class MainActivity : AppCompatActivity() {
 
-    internal lateinit var adapter: SortedListSampleAdapter
-    internal lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: SortedListSampleAdapter
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +32,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.buttonAdd).setOnClickListener { adapter.addUser(DataGenerator.generateNewUser()) }
         findViewById<View>(R.id.buttonAddBulk).setOnClickListener { adapter.addUsers(DataGenerator.generateBulkUsers()) }
         findViewById<View>(R.id.buttonRemove).setOnClickListener { adapter.removeUser((Math.random() * (adapter.itemCount - 1)).toInt()) }
-        findViewById<View>(R.id.buttonUpdate).setOnClickListener {
-            //todo
-        }
-
-
+        findViewById<View>(R.id.buttonUpdate).setOnClickListener { adapter.updateUser((Math.random() * (adapter.itemCount - 1)).toInt()) }
     }
 }

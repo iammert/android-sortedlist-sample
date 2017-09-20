@@ -61,9 +61,20 @@ class SortedListSampleAdapter : RecyclerView.Adapter<SortedListSampleAdapter.Use
         }
     }
 
+    fun updateUser(index: Int) {
+        if (userSortedList.size() == 0) {
+            return
+        }
+
+        userSortedList.beginBatchedUpdates()
+        val user = userSortedList.get(index).copy()
+        user.age = user.age + 1
+        userSortedList.add(user)
+        userSortedList.endBatchedUpdates()
+    }
 
     fun changeSortType(comparator: Comparator<User>) {
-        with(userSortedList){
+        with(userSortedList) {
             sortedListComparatorWrapper.setComparator(comparator)
             beginBatchedUpdates()
             val tempUsers = (0 until userSortedList.size()).mapTo(ArrayList<User>()) { get(it) }

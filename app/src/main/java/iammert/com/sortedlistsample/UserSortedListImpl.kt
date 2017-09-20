@@ -18,10 +18,10 @@ class UserSortedListImpl(adapter: RecyclerView.Adapter<*>) : SortedListComparato
     }
 
     override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem == newItem
     }
 
     override fun areItemsTheSame(item1: User, item2: User): Boolean {
-        return item1 == item2
+        return item1.id == item2.id
     }
 }
